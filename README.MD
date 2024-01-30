@@ -8,7 +8,7 @@ This Terraform module creates an S3 bucket on AWS.
 - `bucket_acl` (Optional, Default: "true"): The access control list (ACL) for the bucket : block_public_acls, block_public_policy, ignore_public_acls, restrict_public_buckets
 
 ## Commands to Change Variables
-For Linux, type the following commands in terminal before PLAN
+For Linux/ WSL Ubuntu, type the following commands in terminal before PLAN
 - `export TF_VAR_bucket_name="(YOUR BUCKET NAME)"`
 - `export TF_VAR_block_public_acls="(true/false)"`
 - `export TF_VAR_block_public_policy="(true/false)"`
