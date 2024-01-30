@@ -2,13 +2,17 @@ provider "aws" {
   region = "us-east-2"  #Set the region
 }
 
+#Created the S3 Bucket
+
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = var.bucket_name
 
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true #Activates Prevent Destroy with Lifecycle for S3 Bucket
   }
 }
+
+#Access Control List of the S3 Bucket
 
 resource "aws_s3_bucket_public_access_block" "public_access" {
   bucket                  = aws_s3_bucket.s3_bucket.id
@@ -18,9 +22,11 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
   restrict_public_buckets = var.restrict_public_buckets
 }
 
+#Versoning Control of the S3 bucket
+
 resource "aws_s3_bucket_versioning" "enable" {
     bucket = aws_s3_bucket.s3_bucket.id
     versioning_configuration {
-      status = "Enabled"
+      status = "Enabled" # Allows Versioning of files stored in S3 Bucket
     }
 }
